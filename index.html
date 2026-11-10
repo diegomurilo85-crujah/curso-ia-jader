@@ -1,0 +1,419 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="theme-color" content="#2A351E">
+  <meta name="description" content="Mentoria individual 100% online e ao vivo de Inteligência Artificial para Jáder: Claude, prompts, n8n, Supabase, GitHub, agentes, automações e dashboards. 12 encontros em 3 meses.">
+  <meta property="og:title" content="Mentoria IA na Prática | Proposta para Jáder">
+  <meta property="og:description" content="3 meses. 12 sábados online ao vivo. 30 horas. Uma solução completa desenvolvida na prática.">
+  <title>Mentoria IA na Prática · Proposta para Jáder</title>
+  <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect rx='16' width='64' height='64' fill='%232A351E'/%3E%3Ctext x='32' y='42' text-anchor='middle' font-family='Arial,sans-serif' font-size='32' font-weight='700' fill='%23C4A45A'%3EIA%3C/text%3E%3C/svg%3E">
+  <style>
+  :root{--forest:#2A351E;--forestdeep:#151E13;--gold:#C4A45A;--goldsoft:#E4D4A7;--emerald:#0B4F3F;--mint:#2FA37C;--navy:#16233F;--cream:#EFE8DA;--ice:#E3EBEF;--crystal:#BCC6CF;--white:#fff;--ink:#182319;--muted:#626C5F;--line:rgba(42,53,30,.14);--radius:20px;--shadow:0 26px 65px rgba(30,43,26,.10)}
+  *,*::before,*::after{box-sizing:border-box}
+  html{scroll-behavior:smooth;scroll-padding-top:85px}
+  body{margin:0;background:#FBFAF6;color:var(--ink);font-family:'Miranda Sans',Inter,ui-sans-serif,system-ui,-apple-system,'Segoe UI',Arial,sans-serif;line-height:1.55;-webkit-font-smoothing:antialiased}
+  a{color:inherit;text-decoration:none}
+  button,input{font:inherit}
+  button{cursor:pointer}
+  button:focus-visible,a:focus-visible,input:focus-visible,summary:focus-visible{outline:3px solid var(--mint);outline-offset:3px}
+  .container{width:min(1160px,calc(100% - 56px));margin-inline:auto}
+  .eyebrow{font-size:11px;font-weight:780;letter-spacing:.17em;text-transform:uppercase}
+  .section-kicker{font-size:11px;letter-spacing:.19em;text-transform:uppercase;color:var(--emerald);font-weight:800}
+  h1,h2,h3,p{margin-top:0}
+  h1,h2,h3{letter-spacing:-.045em;line-height:1.13}
+  h1{font-size:clamp(46px,5.4vw,78px);font-weight:810}
+  h2{font-size:clamp(32px,4vw,53px);font-weight:780}
+  h3{font-size:22px;font-weight:750}
+  p{color:var(--muted)}
+  strong{font-weight:760}
+  .muted{color:var(--muted)}
+  .gold{color:var(--goldsoft)}
+  .btn{display:inline-flex;align-items:center;justify-content:center;gap:11px;min-height:50px;padding:12px 20px;border:1px solid transparent;border-radius:11px;font-size:13px;font-weight:780;transition:transform .15s,background .15s,box-shadow .15s}
+  .btn:hover{transform:translateY(-2px)}
+  .btn-primary{background:var(--gold);color:#1b281a;box-shadow:0 12px 30px rgba(196,164,90,.18)}
+  .btn-primary:hover{background:#DCC078}
+  .btn-ghost{color:var(--cream);border-color:rgba(239,232,218,.28);background:rgba(255,255,255,.035)}
+  .btn-outline{background:#fff;color:var(--forest);border-color:var(--line)}
+  .btn svg{width:15px;height:15px}
+  .icon{width:20px;height:20px;stroke:currentColor;stroke-width:1.8;fill:none;stroke-linecap:round;stroke-linejoin:round;flex:none}
+  .pill{display:inline-flex;align-items:center;gap:7px;border:1px solid rgba(239,232,218,.24);border-radius:999px;padding:7px 12px;color:var(--goldsoft);font-size:11px;letter-spacing:.08em;font-weight:720}
+  .pill .dot{width:6px;height:6px;border-radius:50%;background:var(--mint);box-shadow:0 0 0 4px rgba(47,163,124,.12)}
+  /* Header + hero */
+  .hero-shell{background:radial-gradient(ellipse at 90% 35%,rgba(47,163,124,.17),transparent 37%),radial-gradient(ellipse at 10% 85%,rgba(196,164,90,.08),transparent 43%),linear-gradient(123deg,#1B2718,#2A351E 55%,#162A27);color:var(--cream);position:relative;overflow:hidden}
+  .hero-shell:after{content:'';position:absolute;inset:0;background-image:linear-gradient(rgba(196,164,90,.028) 1px,transparent 1px),linear-gradient(90deg,rgba(196,164,90,.028) 1px,transparent 1px);background-size:54px 54px;pointer-events:none;mask-image:linear-gradient(90deg,transparent,black)}
+  .top-nav{height:84px;position:relative;z-index:3;border-bottom:1px solid rgba(239,232,218,.12)}
+  .top-nav .container{display:flex;align-items:center;justify-content:space-between;height:100%;gap:20px}
+  .brand{display:flex;align-items:center;gap:12px;min-width:175px}
+  .brand-emblem{width:36px;height:36px;border:1px solid rgba(196,164,90,.72);border-radius:10px;display:flex;align-items:center;justify-content:center;color:var(--goldsoft);font-weight:900;letter-spacing:-.1em;font-size:17px}
+  .brand-text{display:flex;flex-direction:column;line-height:1.15}
+  .brand-text b{font-size:14px;letter-spacing:.09em}
+  .brand-text small{color:var(--goldsoft);font-size:9px;letter-spacing:.16em;text-transform:uppercase;margin-top:5px}
+  .nav-links{display:flex;align-items:center;gap:28px}
+  .nav-links a{color:#E4E3D7;font-size:12px;font-weight:670;transition:color .15s}
+  .nav-links a:hover{color:var(--gold)}
+  .nav-end{display:flex;align-items:center;gap:14px}
+  .nav-end .btn{min-height:39px;padding:8px 14px;font-size:12px}
+  .hero{position:relative;z-index:1;padding:82px 0 94px}
+  .hero-layout{display:grid;grid-template-columns:minmax(0,1.15fr) minmax(330px,.85fr);align-items:center;gap:68px}
+  .hero .eyebrow{color:var(--goldsoft);margin:0 0 25px}
+  .hero h1{max-width:715px;margin-bottom:23px}
+  .hero .accent-text{color:var(--gold);font-style:italic;font-family:Georgia,serif;font-weight:590;letter-spacing:-.055em}
+  .hero-sub{font-size:17px;line-height:1.8;color:#D7DACD;max-width:555px;margin-bottom:28px}
+  .hero-actions{display:flex;flex-wrap:wrap;gap:12px;margin-bottom:49px}
+  .hero-stats{display:flex;flex-wrap:wrap;gap:26px}
+  .stat{padding-right:26px;border-right:1px solid rgba(239,232,218,.21)}
+  .stat:last-child{border-right:0;padding-right:0}
+  .stat b{display:block;font-size:28px;font-weight:810;letter-spacing:-.05em;color:#F8F5EB;line-height:1.1}
+  .stat span{font-size:11px;color:#BFCABD;letter-spacing:.045em}
+  .terminal{max-width:448px;margin-left:auto;position:relative;background:linear-gradient(145deg,#202D29,#14211E);border:1px solid rgba(196,164,90,.26);box-shadow:0 35px 100px rgba(0,0,0,.29),0 0 0 12px rgba(255,255,255,.02);border-radius:22px;padding:0;overflow:hidden;transform:rotate(1deg)}
+  .terminal:before{content:'';position:absolute;left:-3px;top:22%;bottom:22%;width:3px;background:linear-gradient(var(--gold),var(--mint))}
+  .terminal-top{display:flex;align-items:center;justify-content:space-between;padding:18px 21px;border-bottom:1px solid rgba(255,255,255,.09)}
+  .dots{display:flex;gap:7px}.dots i{display:block;height:7px;width:7px;border-radius:50%;background:rgba(239,232,218,.23)}.dots i:first-child{background:#BA775E}.dots i:nth-child(2){background:var(--gold)}.dots i:last-child{background:var(--mint)}
+  .terminal-id{font-size:10px;color:#AEBFB7;letter-spacing:.15em;font-weight:800}
+  .terminal-body{padding:26px 23px 24px}
+  .terminal-label{display:flex;gap:10px;align-items:center;font-size:10px;color:var(--goldsoft);font-weight:800;letter-spacing:.15em;text-transform:uppercase;margin-bottom:18px}
+  .terminal-label svg{width:18px;height:18px}
+  .chat-user{background:#31403B;border:1px solid rgba(255,255,255,.08);border-radius:15px 15px 4px 15px;padding:13px 17px;margin-left:35px;color:#F4F1E8;font-size:13px;line-height:1.6}
+  .chat-answer{margin-top:13px;border:1px solid rgba(196,164,90,.18);background:rgba(10,79,63,.21);border-radius:15px 15px 15px 4px;padding:17px}
+  .answer-head{display:flex;align-items:center;gap:7px;color:var(--goldsoft);font-size:11px;font-weight:800;margin-bottom:12px}
+  .checkline{display:flex;align-items:center;gap:10px;font-size:12px;color:#E4EBDF;margin:10px 0}.check-circle{display:inline-flex;align-items:center;justify-content:center;width:16px;height:16px;border-radius:50%;background:rgba(47,163,124,.25);font-size:10px;color:#82D5B1}
+  .terminal-footer{display:flex;justify-content:space-between;align-items:center;gap:8px;margin-top:20px;padding-top:16px;border-top:1px solid rgba(255,255,255,.09);font-size:10px;color:#B0C3B9}
+  .terminal-footer b{color:var(--goldsoft);font-size:10px}
+  .mini-flows{display:flex;gap:6px;flex-wrap:wrap}.mini-flows span{padding:5px 7px;border:1px solid rgba(255,255,255,.12);border-radius:6px}
+  .hero-floor{height:5px;background:linear-gradient(90deg,var(--gold),var(--forest),var(--mint),var(--gold))}
+  /* General sections */
+  section.content-section{padding:102px 0}
+  .section-header{max-width:800px;margin-bottom:40px}
+  .section-header h2{margin:10px 0 17px}
+  .section-header p{font-size:16px;line-height:1.85;max-width:740px;margin:0}
+  .soft-section{background:#F4F1E9}
+  .section-intro{display:flex;align-items:end;justify-content:space-between;gap:22px;margin-bottom:30px}
+  .section-intro h2{margin:9px 0 0}
+  .section-intro p{max-width:360px;margin:0 0 5px;font-size:14px}
+  .tools-band{border-bottom:1px solid var(--line);background:#F7F5EE}
+  .tools-line{display:flex;align-items:center;justify-content:space-between;gap:12px;flex-wrap:wrap;padding:18px 0}
+  .tools-label{font-size:10px;font-weight:800;letter-spacing:.14em;color:#50604C;text-transform:uppercase}
+  .tools-pills{display:flex;gap:8px;flex-wrap:wrap;align-items:center}
+  .tool{font-size:11px;font-weight:750;border:1px solid #D9D8CB;padding:6px 10px;border-radius:999px;color:#42503A;background:#fff}
+  .journey-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:18px}
+  .journey-card{background:#fff;border:1px solid var(--line);border-radius:21px;padding:29px;box-shadow:0 5px 30px rgba(26,39,24,.035)}
+  .journey-card.dark{background:var(--forest);color:var(--cream);border-color:var(--forest)}
+  .journey-card .j-number{font-family:Georgia,serif;font-style:italic;font-size:40px;line-height:1;color:var(--gold);display:block;margin-bottom:35px}
+  .journey-card h3{font-size:22px;margin-bottom:11px}
+  .journey-card p{font-size:13px;line-height:1.9;margin:0}
+  .journey-card.dark p{color:#CBD5C7}
+  .journey-card .j-bottom{border-top:1px solid var(--line);padding-top:15px;margin-top:25px;color:var(--emerald);font-size:11px;font-weight:790;letter-spacing:.08em;text-transform:uppercase}
+  .journey-card.dark .j-bottom{border-color:rgba(255,255,255,.17);color:var(--goldsoft)}
+  /* Curriculum */
+  .curriculum-header{display:flex;align-items:center;justify-content:space-between;gap:25px;margin-bottom:40px}
+  .curriculum-header p{margin:14px 0 0}
+  .chapter{margin-bottom:74px}
+  .chapter:last-of-type{margin-bottom:0}
+  .chapter-title{display:flex;align-items:center;gap:22px;margin-bottom:24px}
+  .chapter-num{font-family:Georgia,serif;line-height:1;font-size:68px;font-style:italic;letter-spacing:-.07em;color:var(--gold);flex:none}
+  .chapter-title h3{font-size:28px;margin:0 0 6px}
+  .chapter-title p{font-size:13px;margin:0}
+  .chapter-rule{height:1px;flex:1;background:linear-gradient(90deg,var(--line),transparent);margin-left:20px}
+  .session-grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:15px}
+  .session-card{background:#fff;border:1px solid var(--line);border-radius:18px;padding:25px 25px 23px;box-shadow:0 3px 20px rgba(30,43,26,.03);transition:border-color .2s,transform .2s,box-shadow .2s;min-height:270px}
+  .session-card:hover{border-color:rgba(196,164,90,.65);transform:translateY(-2px);box-shadow:0 14px 38px rgba(30,43,26,.08)}
+  .session-top{display:flex;align-items:center;justify-content:space-between;margin-bottom:14px;gap:12px}
+  .session-index{display:inline-flex;align-items:center;gap:8px;font-size:11px;color:var(--emerald);font-weight:850;letter-spacing:.12em;text-transform:uppercase}
+  .session-index:before{content:'';width:19px;height:2px;background:var(--gold)}
+  .session-duration{font-size:10px;background:#F1F4EE;border-radius:40px;padding:4px 8px;color:#60745B;font-weight:730}
+  .session-card h4{font-size:18px;letter-spacing:-.025em;line-height:1.35;margin:0 0 10px}
+  .session-card p{font-size:13px;line-height:1.8;margin:0 0 17px}
+  .practice{padding:11px 12px;background:#EFF5EF;border-radius:9px;font-size:12px;line-height:1.7;color:#284B39}
+  .practice b{font-weight:780;color:#0B4F3F}
+  .chapter-outcome{display:flex;align-items:start;gap:13px;padding:19px 22px;margin-top:15px;background:#F2F0E7;border:1px dashed rgba(42,53,30,.19);border-radius:15px}
+  .chapter-outcome svg{color:var(--emerald);margin-top:2px}
+  .chapter-outcome p{margin:0;font-size:13px;line-height:1.75}
+  .chapter-outcome b{color:var(--forest)}
+  /* Tech system */
+  .architecture{background:linear-gradient(155deg,#1C2C24 0%,#17253B 94%);color:var(--cream);position:relative;overflow:hidden}
+  .architecture:before{content:'';position:absolute;inset:0;opacity:.07;background-image:radial-gradient(#D6B96E 1px, transparent 1px);background-size:18px 18px}
+  .architecture .container{position:relative}
+  .architecture .section-kicker{color:var(--goldsoft)}
+  .architecture .section-header p{color:#CAD4CF}
+  .arch-panel{border-radius:22px;border:1px solid rgba(255,255,255,.13);background:rgba(10,18,20,.25);padding:34px;box-shadow:0 40px 80px rgba(0,0,0,.13)}
+  .arch-label{font-size:10px;letter-spacing:.17em;color:#AEC1B9;font-weight:800;text-transform:uppercase;text-align:center;margin:0 0 22px}
+  .arch-lane{display:grid;grid-template-columns:1fr 48px 1fr 48px 1fr;gap:10px;align-items:center}
+  .arch-box{height:100%;min-height:124px;background:linear-gradient(155deg,#29392F,#1E302D);border:1px solid rgba(196,164,90,.27);border-radius:15px;padding:19px;position:relative}
+  .arch-box b{display:block;color:var(--cream);font-size:15px;margin-bottom:7px}
+  .arch-box span{font-size:12px;line-height:1.65;color:#B5C7BC;display:block}
+  .arch-box .arch-mini{font-size:10px;letter-spacing:.1em;color:var(--goldsoft);font-weight:850;text-transform:uppercase;margin-bottom:8px}
+  .arch-arrow{display:flex;align-items:center;justify-content:center;color:var(--gold);font-size:28px;font-weight:300;letter-spacing:0}
+  .arch-lane.two{max-width:760px;margin:20px auto 0;grid-template-columns:1fr 48px 1fr}
+  .arch-down{margin:18px auto;text-align:center;color:var(--gold);font-size:26px;line-height:1}
+  .arch-bar{margin-top:22px;background:rgba(196,164,90,.10);border:1px solid rgba(196,164,90,.24);border-radius:12px;padding:18px 24px;display:flex;justify-content:center;gap:17px;align-items:center;flex-wrap:wrap}
+  .arch-bar b{color:var(--goldsoft);font-size:13px}
+  .arch-bar span{color:#CCD9CF;font-size:12px}
+  .arch-disclaimer{font-size:11px;text-align:center;color:#A8BFB4;margin:19px auto 0;max-width:740px}
+  .usecase-grid{display:grid;grid-template-columns:1fr 1fr;gap:22px;margin-top:26px}
+  .usecase{padding:27px;background:rgba(255,255,255,.045);border:1px solid rgba(255,255,255,.1);border-radius:17px}
+  .usecase h3{font-size:17px;margin-bottom:13px}
+  .usecase p{color:#C8D2C9;font-size:13px;line-height:1.8;margin:0}
+  .sequence{display:flex;flex-wrap:wrap;gap:8px;margin-top:14px}
+  .sequence span{font-size:10px;color:var(--goldsoft);border:1px solid rgba(196,164,90,.25);border-radius:8px;padding:5px 8px}
+  /* Methodology + scope */
+  .methods-layout{display:grid;grid-template-columns:.8fr 1.2fr;gap:58px;align-items:center}
+  .methods-layout h2{margin:8px 0 16px}
+  .method-stack{background:#fff;border:1px solid var(--line);border-radius:22px;padding:30px;box-shadow:var(--shadow)}
+  .method-title{display:flex;justify-content:space-between;gap:15px;align-items:end;margin-bottom:20px}
+  .method-title b{font-size:16px}
+  .method-title span{font-size:11px;color:var(--muted)}
+  .method-progress{display:flex;gap:3px;width:100%;height:17px;border-radius:999px;overflow:hidden;margin:0 0 22px}
+  .method-progress span:nth-child(1){background:#677F61;flex:15}
+  .method-progress span:nth-child(2){background:#C4A45A;flex:30}
+  .method-progress span:nth-child(3){background:#0B4F3F;flex:85}
+  .method-progress span:nth-child(4){background:#8EA77B;flex:20}
+  .method-row{display:grid;grid-template-columns:12px 1fr auto;gap:11px;align-items:center;padding:11px 0;border-bottom:1px solid var(--line);font-size:13px}
+  .method-row:last-child{border-bottom:0;padding-bottom:0}
+  .method-row i{width:10px;height:10px;border-radius:3px;background:var(--swatch)}
+  .method-row b{font-size:12px}
+  .benefit-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:14px;margin-top:36px}
+  .benefit{border:1px solid var(--line);border-radius:15px;background:#fff;padding:22px}
+  .benefit svg{color:var(--emerald);margin-bottom:17px;width:24px;height:24px}
+  .benefit b{display:block;margin-bottom:7px;font-size:13px}
+  .benefit p{font-size:12px;margin:0;line-height:1.7}
+  .faq{background:#F3F0E8}
+  .faq-layout{display:grid;grid-template-columns:.78fr 1.22fr;gap:80px}
+  .faq h2{margin-top:10px}
+  details.faq-item{background:#fff;border:1px solid var(--line);border-radius:14px;margin-bottom:10px;padding:0 20px}
+  details.faq-item summary{list-style:none;display:flex;align-items:center;justify-content:space-between;cursor:pointer;padding:19px 0;gap:15px;font-size:13px;font-weight:750}
+  details.faq-item summary::-webkit-details-marker{display:none}
+  details.faq-item summary:after{content:'+';font-size:21px;font-weight:400;color:var(--emerald)}
+  details.faq-item[open] summary:after{content:'–'}
+  details.faq-item p{padding:0 0 19px;margin:0;font-size:12.5px;line-height:1.85}
+  /* Pricing */
+  .investment{background:linear-gradient(160deg,#F1EEE3,#EAE6D6);position:relative}
+  .investment .section-header{margin-bottom:39px}
+  .price-layout{display:grid;grid-template-columns:1.05fr .95fr;gap:23px;align-items:stretch}
+  .pricing-calculator{background:#101710;color:#F5F4EF;border:1px solid #3E4738;border-radius:22px;padding:32px;min-width:0;box-shadow:0 24px 48px rgba(25,35,24,.14)}
+  .pricing-calculator h3{font-size:19px;letter-spacing:-.02em;margin-bottom:7px}
+  .pricing-calculator .cal-desc{font-size:12px;color:#AFC0B1;margin-bottom:27px}
+  .field-label{display:block;color:#D4DCD2;font-size:12px;font-weight:700;margin-bottom:10px}
+  .hours-options{display:flex;gap:5px;padding:5px;background:#222A23;border-radius:50px;margin-bottom:24px}
+  .hours-options button{flex:1;border:0;border-radius:40px;background:transparent;color:#CFD4C9;font-size:12px;font-weight:750;min-height:38px;transition:background .2s,color .2s}
+  .hours-options button[aria-pressed="true"]{background:#4A514A;color:#fff;box-shadow:0 3px 12px rgba(0,0,0,.14)}
+  .rate-labels{display:flex;align-items:center;justify-content:space-between;gap:15px;margin-bottom:12px}
+  .rate-value{font-size:17px;font-weight:830;color:#fff}
+  input[type=range]{width:100%;appearance:none;-webkit-appearance:none;background:linear-gradient(to right,var(--gold) 0,var(--gold) var(--fill,23%),#2B342C var(--fill,23%),#2B342C 100%);height:13px;border-radius:30px;outline:none;cursor:pointer;margin:6px 0 10px}
+  input[type=range]::-webkit-slider-thumb{-webkit-appearance:none;background:#fff;width:22px;height:22px;border:2px solid #E9E9E9;border-radius:50%;box-shadow:0 2px 5px #0005}
+  input[type=range]::-moz-range-thumb{background:#fff;width:19px;height:19px;border:2px solid #E9E9E9;border-radius:50%}
+  .range-limits{display:flex;align-items:center;justify-content:space-between;font-size:10px;color:#C5CFC2}
+  .calc-rule{height:1px;background:#39463D;margin:27px 0 22px}
+  .calc-result-name{font-size:11px;color:#CDD3C9;margin-bottom:6px}
+  .calc-result{font-size:36px;font-weight:840;letter-spacing:-.055em;line-height:1.15;color:#fff}
+  .calc-note{font-size:12px;color:#B5C3B2;margin-top:6px}
+  .calc-alt{font-size:10.5px;color:#BDAE8A;min-height:18px;margin-top:13px}
+  .quote{background:#fff;border:1px solid rgba(42,53,30,.15);border-radius:22px;padding:32px;box-shadow:0 24px 55px rgba(26,38,21,.055);position:relative;overflow:hidden}
+  .quote:before{content:'';position:absolute;top:0;left:0;right:0;height:5px;background:linear-gradient(90deg,var(--forest),var(--gold),var(--forest))}
+  .quote .eyebrow{color:var(--emerald)}
+  .quote h3{font-size:22px;margin:10px 0 6px}
+  .quote-intro{font-size:13px;color:var(--muted);margin-bottom:22px}
+  .quote-price{font-size:clamp(40px,4.5vw,55px);font-weight:830;letter-spacing:-.07em;color:var(--forest);line-height:1.1}
+  .quote-price span{font-size:15px;letter-spacing:0;font-weight:660;color:#62745A}
+  .quote-detail{font-size:12px;color:#61715B;margin-top:5px;margin-bottom:22px}
+  .quote-checks{border-top:1px solid var(--line);padding-top:19px;display:grid;gap:12px}
+  .quote-check{display:flex;align-items:start;gap:10px;font-size:12.5px;line-height:1.55;color:#455443}
+  .quote-check svg{color:var(--emerald);width:17px;height:17px;margin-top:1px}
+  .quote-total{margin-top:22px;padding:13px 15px;border-radius:10px;background:#F1F2E9;font-size:13px;display:flex;align-items:center;justify-content:space-between;gap:10px}
+  .quote-total b{font-size:17px;color:var(--forest)}
+  .price-foot{display:flex;justify-content:space-between;gap:18px;align-items:center;flex-wrap:wrap;margin-top:25px}
+  .price-foot p{margin:0;font-size:11px;line-height:1.7;max-width:730px}
+  .price-foot .btn{font-size:12px;min-height:43px}
+  footer{background:#172116;color:var(--cream);padding:30px 0}
+  footer .container{display:flex;justify-content:space-between;align-items:center;gap:20px}
+  footer b{font-size:12px;letter-spacing:.11em}
+  footer small{color:#A9B8A5;font-size:11px}
+  footer a{font-size:11px;color:var(--goldsoft)}
+  .reveal{opacity:1;transform:none}
+  @media (prefers-reduced-motion:no-preference){.reveal{opacity:0;transform:translateY(16px);transition:opacity .6s ease,transform .6s ease}.reveal.visible{opacity:1;transform:none}}
+  @media (max-width:1020px){.hero-layout{gap:30px}.nav-links{gap:15px}.nav-end .btn{display:none}.hero{padding:67px 0}.hero-stats{gap:18px}.stat{padding-right:18px}.methods-layout,.faq-layout{gap:30px}}
+  @media (max-width:820px){.container{width:min(100% - 36px,720px)}.nav-links{display:none}.top-nav{height:72px}.hero-layout,.methods-layout,.faq-layout,.price-layout{grid-template-columns:1fr}.hero{padding:65px 0 72px}.hero h1{font-size:clamp(43px,8vw,67px)}.terminal{max-width:none;width:100%;margin-top:35px;transform:none}.journey-grid{grid-template-columns:1fr}.journey-card .j-number{margin-bottom:22px}.journey-card{padding:25px}.chapter-rule{display:none}.section-intro{align-items:start;flex-direction:column}.benefit-grid{grid-template-columns:repeat(2,1fr)}.arch-panel{padding:20px}.section-intro p{max-width:600px}.methods-layout{gap:26px}section.content-section{padding:78px 0}}
+  @media (max-width:620px){h2{font-size:32px}.hero-sub{font-size:15px}.hero-actions .btn{flex:1}.hero-stats{gap:12px;justify-content:space-between}.stat{padding-right:13px}.stat b{font-size:24px}.stat span{font-size:10px}.tools-line{justify-content:start;gap:13px}.tools-label{width:100%}.session-grid{grid-template-columns:1fr}.session-card{min-height:unset}.chapter-title{gap:12px}.chapter-title h3{font-size:23px}.chapter-num{font-size:58px}.arch-lane,.arch-lane.two{display:flex;flex-direction:column;gap:7px;max-width:none}.arch-box{width:100%;min-height:auto}.arch-arrow{transform:rotate(90deg);height:27px}.arch-down{margin:8px auto}.arch-bar{align-items:start;justify-content:start}.usecase-grid{grid-template-columns:1fr}.benefit-grid{grid-template-columns:1fr 1fr}.benefit{padding:16px}.price-foot{display:block}.price-foot .btn{margin-top:15px}.pricing-calculator,.quote{padding:23px}.quote-price{font-size:47px}.top-nav .brand{min-width:0}footer .container{align-items:start;flex-direction:column}}
+  @media (max-width:420px){.container{width:calc(100% - 30px)}.brand-text b{font-size:12px}.pill{font-size:9px;padding:6px 8px}.hero-stats{display:grid;grid-template-columns:repeat(3,1fr)}.stat{border:0;padding-right:0}.benefit-grid{grid-template-columns:1fr}.hero-actions{flex-direction:column}.terminal-footer{flex-direction:column;align-items:flex-start}}
+  @media print{*{-webkit-print-color-adjust:exact!important;print-color-adjust:exact!important}html{scroll-behavior:auto}body{background:#fff;font-size:11px}.hero-shell{background:var(--forest)!important}.container{width:96%}.top-nav{height:58px}.hero{padding:30px 0}.hero-layout{grid-template-columns:1.3fr .7fr;gap:20px}.hero h1{font-size:35px}.hero-sub{font-size:12px}.hero-actions,.nav-links,.nav-end,.price-foot .btn{display:none!important}.hero-stats{margin-top:12px}.terminal{transform:none}.terminal-body{padding:15px}.stat b{font-size:20px}section.content-section{padding:30px 0}.chapter{margin-bottom:28px}.chapter-title{margin-bottom:10px}.chapter-num{font-size:38px}.session-card{padding:13px;min-height:auto;break-inside:avoid}.session-card p{font-size:10px;margin-bottom:7px}.session-card h4{font-size:14px}.practice{font-size:9px;padding:8px}.section-header{margin-bottom:20px}.section-header h2{font-size:27px}.section-header p{font-size:11px}.journey-card{padding:15px}.journey-card h3{font-size:18px}.arch-panel,.method-stack,.pricing-calculator,.quote{padding:16px}h2{font-size:27px}.faq-item{break-inside:avoid}.architecture,.investment,.chapter,.journey-card{break-inside:avoid}.tools-line{padding:10px 0}.faq-item summary{padding:8px 0}footer{padding:15px 0}}
+  </style>
+</head>
+<body>
+  <svg aria-hidden="true" style="position:absolute;width:0;height:0;overflow:hidden" xmlns="http://www.w3.org/2000/svg">
+    <symbol id="i-arrow" viewBox="0 0 24 24"><path d="M4 12h16M14 6l6 6-6 6"/></symbol>
+    <symbol id="i-check" viewBox="0 0 24 24"><path d="m5 12 5 5L20 7"/></symbol>
+    <symbol id="i-spark" viewBox="0 0 24 24"><path d="m12 3 1.8 6.2L20 11l-6.2 1.8L12 19l-1.8-6.2L4 11l6.2-1.8L12 3ZM20 19l.6 1.4L22 21l-1.4.6L20 23l-.6-1.4L18 21l1.4-.6L20 19Z"/></symbol>
+    <symbol id="i-cap" viewBox="0 0 24 24"><path d="m2 9 10-5 10 5-10 5L2 9Zm4 2v6c3 3 9 3 12 0v-6M22 9v7"/></symbol>
+    <symbol id="i-brief" viewBox="0 0 24 24"><rect x="3" y="7" width="18" height="14" rx="2"/><path d="M8 7V5a2 2 0 0 1 2-2h4a2 2 0 0 1 2 2v2M3 13a22 22 0 0 0 18 0"/></symbol>
+    <symbol id="i-lock" viewBox="0 0 24 24"><rect x="4" y="11" width="16" height="10" rx="2"/><path d="M8 11V7a4 4 0 1 1 8 0v4"/></symbol>
+    <symbol id="i-code" viewBox="0 0 24 24"><path d="m8 7-5 5 5 5m8-10 5 5-5 5m-3-13-2 16"/></symbol>
+    <symbol id="i-layers" viewBox="0 0 24 24"><path d="m12 2 9 5-9 5-9-5 9-5Zm-9 10 9 5 9-5m-18 5 9 5 9-5"/></symbol>
+  </svg>
+
+  <div class="hero-shell" id="inicio">
+    <header class="top-nav">
+      <div class="container">
+        <a class="brand" href="#inicio" aria-label="Voltar ao início">
+          <span class="brand-emblem">IA<span style="color:var(--gold);font-size:23px">.</span></span>
+          <span class="brand-text"><b>MENTORIA IA</b><small>Do conceito à prática</small></span>
+        </a>
+        <nav class="nav-links" aria-label="Navegação principal"><a href="#visao">A proposta</a><a href="#cronograma">Cronograma</a><a href="#projeto">Projeto final</a><a href="#investimento">Investimento</a></nav>
+        <div class="nav-end"><span class="pill"><span class="dot"></span> EXCLUSIVO PARA JÁDER</span><a href="#investimento" class="btn btn-primary">Ver proposta <svg class="icon"><use href="#i-arrow"/></svg></a></div>
+      </div>
+    </header>
+    <div class="hero">
+      <div class="container hero-layout">
+        <div>
+          <div class="eyebrow">FORMAÇÃO PERSONALIZADA <span style="opacity:.5">/</span> 100% ONLINE · AO VIVO</div>
+          <h1>Faça a IA trabalhar <span class="accent-text">por você.</span></h1>
+          <p class="hero-sub">Aprenda a dominar o Claude, criar prompts de alto nível, conectar ferramentas, automatizar sua rotina e desenvolver uma solução inteligente do zero — sem precisar se tornar programador.</p>
+          <div class="hero-actions"><a class="btn btn-primary" href="#cronograma">Explorar os 12 encontros <svg class="icon"><use href="#i-arrow"/></svg></a><a class="btn btn-ghost" href="#projeto">Conhecer o projeto final</a></div>
+          <div class="hero-stats"><div class="stat"><b>3 meses</b><span>Jornada acelerada</span></div><div class="stat"><b>12</b><span>Encontros online aos sábados</span></div><div class="stat"><b>30 horas</b><span>De prática orientada</span></div></div>
+        </div>
+        <div class="terminal" role="img" aria-label="Exemplo de assistente de IA organizando a rotina e integrando Claude, n8n e Supabase">
+          <div class="terminal-top"><div class="dots"><i></i><i></i><i></i></div><span class="terminal-id">PRÉVIA DO PROJETO FINAL</span></div>
+          <div class="terminal-body">
+            <div class="terminal-label"><svg class="icon"><use href="#i-spark"/></svg> CENTRAL INTELIGENTE</div>
+            <div class="chat-user">Quais são minhas prioridades hoje? E o que posso automatizar?</div>
+            <div class="chat-answer"><div class="answer-head"><svg class="icon" style="width:15px;height:15px"><use href="#i-spark"/></svg> Assistente de IA</div><div class="checkline"><span class="check-circle">✓</span> Consultar tarefas e compromissos</div><div class="checkline"><span class="check-circle">✓</span> Organizar ações por prioridade</div><div class="checkline"><span class="check-circle">✓</span> Gerar resumo e atualizar indicadores</div></div>
+            <div class="terminal-footer"><div class="mini-flows"><span>Claude</span><span>n8n</span><span>Supabase</span></div><b>● FLUXO CONECTADO</b></div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="hero-floor"></div>
+  </div>
+
+  <div class="tools-band"><div class="container tools-line"><span class="tools-label">O ecossistema que você vai conhecer</span><div class="tools-pills"><span class="tool">Claude</span><span class="tool">ChatGPT</span><span class="tool">n8n</span><span class="tool">Supabase</span><span class="tool">GitHub</span><span class="tool">OpenRouter</span><span class="tool">MCP</span><span class="tool">Dashboards</span></div></div></div>
+
+  <section class="content-section" id="visao"><div class="container">
+    <div class="section-header reveal"><div class="section-kicker">01 / A TRANSFORMAÇÃO</div><h2>Não é um curso para assistir.<br>É uma jornada para <span style="color:var(--emerald)">construir.</span></h2><p>O objetivo é transformar o Claude em um verdadeiro aliado para pensar melhor, trabalhar com mais agilidade e automatizar tarefas. Cada conceito é aplicado em situações reais — e o aprendizado evolui até um projeto funcional.</p></div>
+    <div class="journey-grid">
+      <article class="journey-card reveal"><span class="j-number">01.</span><h3>Domine a IA</h3><p>Entenda como os modelos funcionam, escreva prompts precisos, personalize o Claude, organize projetos e explore skills e conectores.</p><div class="j-bottom">MÊS 1 · FUNDAMENTOS & PRODUTIVIDADE</div></article>
+      <article class="journey-card reveal"><span class="j-number">02.</span><h3>Automatize sua rotina</h3><p>Crie fluxos no n8n, conecte APIs e ferramentas, armazene dados no Supabase e entenda o papel do GitHub no desenvolvimento.</p><div class="j-bottom">MÊS 2 · CONEXÕES & AUTOMAÇÕES</div></article>
+      <article class="journey-card dark reveal"><span class="j-number">03.</span><h3>Construa algo seu</h3><p>Crie agentes, desenvolva uma aplicação com ajuda da IA, integre dados e dashboards e publique um projeto utilizável.</p><div class="j-bottom">MÊS 3 · AGENTES & PROJETO REAL</div></article>
+    </div>
+  </div></section>
+
+  <section class="content-section soft-section" id="cronograma"><div class="container">
+    <div class="curriculum-header reveal"><div class="section-header" style="margin:0"><div class="section-kicker">02 / CRONOGRAMA COMPLETO</div><h2>12 sábados. Um caminho claro.</h2><p>Conteúdo concentrado, progressivo e com entregas práticas. O ritmo pode ser calibrado conforme sua evolução, preservando os resultados de cada etapa.</p></div></div>
+
+    <div class="chapter reveal">
+      <div class="chapter-title"><span class="chapter-num">01</span><div><h3>Mês 1 · Domínio da IA</h3><p>Prompts, Claude, personalização, produtividade e conectores.</p></div><div class="chapter-rule"></div></div>
+      <div class="session-grid">
+        <article class="session-card"><div class="session-top"><span class="session-index">SÁBADO 01</span><span class="session-duration">2h30</span></div><h4>LLMs + Engenharia de Prompts</h4><p>Como funcionam Claude e GPT; modelos, tokens, contexto e alucinações. Estrutura de um prompt: objetivo, papel, contexto, exemplos, restrições e formato de resposta.</p><div class="practice"><b>Na prática:</b> criar e testar 5 prompts para necessidades reais.</div></article>
+        <article class="session-card"><div class="session-top"><span class="session-index">SÁBADO 02</span><span class="session-duration">2h30</span></div><h4>Prompting avançado + Tokens</h4><p>Técnicas de instrução, análise crítica, exemplos, prompts reutilizáveis, respostas em JSON, escolha de modelos, contexto enxuto e princípios de otimização de consumo.</p><div class="practice"><b>Na prática:</b> criar biblioteca de prompts e comparar resultados.</div></article>
+        <article class="session-card"><div class="session-top"><span class="session-index">SÁBADO 03</span><span class="session-duration">2h30</span></div><h4>Claude personalizado + Projetos + Skills</h4><p>Instruções pessoais, memória e preferências, projetos, bases de conhecimento, organização de arquivos e criação de skills para tarefas recorrentes.</p><div class="practice"><b>Na prática:</b> configurar seu Claude e criar projetos e skills reutilizáveis.</div></article>
+        <article class="session-card"><div class="session-top"><span class="session-index">SÁBADO 04</span><span class="session-duration">2h30</span></div><h4>Conectores + MCP + Produtividade</h4><p>Plugins/conectores, conceito de MCP, análise de PDFs e planilhas, pesquisas, documentos, agenda, organização de tarefas e introdução a agentes.</p><div class="practice"><b>Na prática:</b> montar um fluxo útil de produtividade pessoal.</div></article>
+      </div>
+      <div class="chapter-outcome"><svg class="icon"><use href="#i-check"/></svg><p><b>Ao final do mês:</b> você terá um Claude organizado e personalizado, uma biblioteca de prompts e workflows de produtividade que já poderá usar no dia a dia.</p></div>
+    </div>
+
+    <div class="chapter reveal">
+      <div class="chapter-title"><span class="chapter-num">02</span><div><h3>Mês 2 · Automações & Conexões</h3><p>n8n, APIs, banco de dados e versionamento — sem complicação desnecessária.</p></div><div class="chapter-rule"></div></div>
+      <div class="session-grid">
+        <article class="session-card"><div class="session-top"><span class="session-index">SÁBADO 05</span><span class="session-duration">2h30</span></div><h4>n8n: sua primeira automação</h4><p>O que são workflows, nodes, triggers, agendamentos, webhooks, credenciais e JSON. Como executar, testar e interpretar falhas de um fluxo.</p><div class="practice"><b>Na prática:</b> automatizar a criação e o envio de um resumo diário.</div></article>
+        <article class="session-card"><div class="session-top"><span class="session-index">SÁBADO 06</span><span class="session-duration">2h30</span></div><h4>n8n + IA + APIs</h4><p>HTTP Request, APIs REST, autenticação, integração com Claude, GPT e OpenRouter, respostas estruturadas, condições, custos, limites e tratamento de erros.</p><div class="practice"><b>Na prática:</b> receber uma mensagem, processar com IA e devolver uma resposta.</div></article>
+        <article class="session-card"><div class="session-top"><span class="session-index">SÁBADO 07</span><span class="session-duration">2h30</span></div><h4>Supabase: entendendo os dados</h4><p>PostgreSQL, tabelas, registros, campos, relacionamentos, SQL introdutório, CRUD, autenticação, RLS, APIs e conexão segura com n8n.</p><div class="practice"><b>Na prática:</b> criar duas tabelas e gravar/consultar dados por automação.</div></article>
+        <article class="session-card"><div class="session-top"><span class="session-index">SÁBADO 08</span><span class="session-duration">2h30</span></div><h4>GitHub + PR + Merge + Deploy</h4><p>Git e GitHub, repositórios, branches, commits, push/pull, pull requests, revisão, merge, conflitos e visão geral de hospedagem e publicação.</p><div class="practice"><b>Na prática:</b> criar um repositório, abrir uma PR e realizar um merge.</div></article>
+      </div>
+      <div class="chapter-outcome"><svg class="icon"><use href="#i-check"/></svg><p><b>Ao final do mês:</b> você já terá automações com IA, dados persistidos em um banco e noção clara de como projetos são organizados e publicados.</p></div>
+    </div>
+
+    <div class="chapter reveal">
+      <div class="chapter-title"><span class="chapter-num">03</span><div><h3>Mês 3 · Agentes & Produto Final</h3><p>Todos os conhecimentos conectados em uma única solução.</p></div><div class="chapter-rule"></div></div>
+      <div class="session-grid">
+        <article class="session-card"><div class="session-top"><span class="session-index">SÁBADO 09</span><span class="session-duration">2h30</span></div><h4>Agentes pessoais & Orquestração</h4><p>Chatbot versus automação versus agente; ferramentas, memória, consultas, RAG introdutório, agentes especializados e aprovação humana para ações sensíveis.</p><div class="practice"><b>Na prática:</b> montar um agente que consulta dados e aciona uma ferramenta.</div></article>
+        <article class="session-card"><div class="session-top"><span class="session-index">SÁBADO 10</span><span class="session-duration">2h30</span></div><h4>Aplicação do zero com IA</h4><p>Desenvolvimento assistido pelo Claude, frontend, backend, componentes, persistência no Supabase, GitHub e boas práticas para pedir alterações com segurança.</p><div class="practice"><b>Na prática:</b> construir o MVP da sua central de produtividade.</div></article>
+        <article class="session-card"><div class="session-top"><span class="session-index">SÁBADO 11</span><span class="session-duration">2h30</span></div><h4>Integrações + Dashboards + Segurança</h4><p>Conectar aplicação, n8n e dados; indicadores e gráficos. Proteção de credenciais, permissões, prompt injection, privacidade, custo e monitoramento.</p><div class="practice"><b>Na prática:</b> integrar os módulos e gerar um dashboard funcional.</div></article>
+        <article class="session-card"><div class="session-top"><span class="session-index">SÁBADO 12</span><span class="session-duration">2h30</span></div><h4>Publicação + Testes + Autonomia</h4><p>Variáveis de ambiente, deploy, testes dos fluxos, leitura de logs, correções, documentação e como manter e evoluir o projeto sem depender do mentor.</p><div class="practice"><b>Na prática:</b> publicar, validar e demonstrar a solução completa.</div></article>
+      </div>
+      <div class="chapter-outcome"><svg class="icon"><use href="#i-check"/></svg><p><b>Ao final do programa:</b> você terá construído um MVP funcional e compreenderá como IA, automações, banco de dados, versionamento e interfaces trabalham juntos.</p></div>
+    </div>
+  </div></section>
+
+  <section class="content-section architecture" id="projeto"><div class="container">
+    <div class="section-header reveal"><div class="section-kicker">03 / COMO TUDO SE CONECTA</div><h2>Um projeto real.<br><span class="gold">Todas as peças no mesmo lugar.</span></h2><p>O projeto final será uma Central Inteligente de Produtividade: uma aplicação simples para registrar tarefas, consultar prioridades, disparar resumos automáticos e acompanhar indicadores. Cada ferramenta tem uma função clara.</p></div>
+    <div class="arch-panel reveal">
+      <div class="arch-label">ARQUITETURA DIDÁTICA DA SOLUÇÃO</div>
+      <div class="arch-lane">
+        <div class="arch-box"><div class="arch-mini">01 · ENTRADA</div><b>Aplicação web / Telegram</b><span>Onde você faz perguntas e registra solicitações.</span></div>
+        <div class="arch-arrow">⟷</div>
+        <div class="arch-box"><div class="arch-mini">02 · ORQUESTRAÇÃO</div><b>n8n + Backend</b><span>Conectam os serviços e executam automações.</span></div>
+        <div class="arch-arrow">⟷</div>
+        <div class="arch-box"><div class="arch-mini">03 · INTELIGÊNCIA</div><b>Claude + GPT via APIs</b><span>Modelos de IA, com opção de integração por OpenRouter.</span></div>
+      </div>
+      <div class="arch-down">↕</div>
+      <div class="arch-lane two">
+        <div class="arch-box"><div class="arch-mini">04 · DADOS</div><b>Supabase</b><span>Guarda tarefas, histórico e resultados com controle de acesso.</span></div>
+        <div class="arch-arrow">⟷</div>
+        <div class="arch-box"><div class="arch-mini">05 · VISUALIZAÇÃO</div><b>Dashboards</b><span>Transformam os dados em indicadores de rotina e produtividade.</span></div>
+      </div>
+      <div class="arch-bar"><b>GitHub</b><span>Versiona o código e registra as alterações (PR → revisão → merge).</span><span aria-hidden="true">·</span><b>Hospedagem</b><span>Publica a aplicação para acesso pelo navegador.</span></div>
+      <p class="arch-disclaimer">Arquitetura de referência para o laboratório. O fluxo exato entre serviços será definido conforme o projeto, com credenciais protegidas no servidor.</p>
+    </div>
+    <div class="usecase-grid reveal">
+      <article class="usecase"><h3>Exemplo: “Quais são minhas prioridades hoje?”</h3><p>A solicitação chega pela aplicação. O n8n consulta os registros no Supabase e envia o contexto necessário ao modelo de IA. A resposta organizada retorna para você e os indicadores podem ser atualizados.</p><div class="sequence"><span>Você</span><span>n8n</span><span>Supabase</span><span>Claude</span><span>Resposta</span></div></article>
+      <article class="usecase"><h3>Você aprende a entender, não apenas a clicar.</h3><p>O foco não é decorar códigos. É saber por que cada tecnologia existe, reconhecer problemas, solicitar mudanças de forma correta à IA e manter controle sobre dados, custos e automações.</p><div class="sequence"><span>Autonomia</span><span>Organização</span><span>Segurança</span><span>Eficiência</span></div></article>
+    </div>
+  </div></section>
+
+  <section class="content-section" id="metodologia"><div class="container">
+    <div class="methods-layout"><div class="reveal"><div class="section-kicker">04 / COMO SERÃO OS SÁBADOS</div><h2>Menos teoria.<br>Mais mão na massa.</h2><p>Os encontros são 100% online e ao vivo, por videoconferência, com compartilhamento de tela e 2h30 de duração. As explicações são objetivas, com foco na aplicação real. Se você avançar rapidamente, aceleramos; se um conceito exigir reforço, ajustamos a profundidade.</p><p style="font-size:13px;margin-top:15px">O programa pressupõe prática independente entre os encontros. O objetivo é que você consiga repetir e adaptar os exercícios sozinho.</p></div>
+      <div class="method-stack reveal"><div class="method-title"><b>Distribuição de cada encontro</b><span>150 minutos</span></div><div class="method-progress" aria-label="15 minutos revisão, 30 minutos conceitos, 85 minutos laboratório e 20 minutos desafio"><span></span><span></span><span></span><span></span></div><div class="method-row"><i style="--swatch:#677F61"></i><span>Revisão e diagnóstico</span><b>15 min</b></div><div class="method-row"><i style="--swatch:#C4A45A"></i><span>Conceitos e demonstração</span><b>30 min</b></div><div class="method-row"><i style="--swatch:#0B4F3F"></i><span>Laboratório prático guiado</span><b>85 min</b></div><div class="method-row"><i style="--swatch:#8EA77B"></i><span>Desafio e próximos passos</span><b>20 min</b></div></div>
+    </div>
+    <div class="benefit-grid reveal"><div class="benefit"><svg class="icon"><use href="#i-cap"/></svg><b>Mentoria individual online</b><p>Encontros ao vivo, com compartilhamento de tela e conteúdo adaptado ao seu ritmo.</p></div><div class="benefit"><svg class="icon"><use href="#i-spark"/></svg><b>Exercícios reais</b><p>Cada aula resulta em algo aplicável no cotidiano.</p></div><div class="benefit"><svg class="icon"><use href="#i-layers"/></svg><b>Materiais de apoio</b><p>Prompts, referências e roteiros para revisão.</p></div><div class="benefit"><svg class="icon"><use href="#i-lock"/></svg><b>Segurança desde o início</b><p>Práticas para proteger dados, acessos e integrações.</p></div></div>
+  </div></section>
+
+  <section class="content-section faq" id="perguntas"><div class="container faq-layout"><div class="reveal"><div class="section-kicker">05 / PERGUNTAS FREQUENTES</div><h2>Uma proposta clara, do início ao fim.</h2><p>Você saberá o que aprenderá, como funcionam os encontros e qual resultado prático esperamos construir.</p></div><div class="reveal">
+    <details class="faq-item"><summary>Preciso saber programar para acompanhar?</summary><p>Não. A mentoria parte do uso de IA e apresenta os conceitos técnicos de maneira aplicada. No projeto final, o desenvolvimento será assistido por IA e o foco será compreender a lógica das conexões e saber orientar as ferramentas.</p></details>
+    <details class="faq-item"><summary>Vou me tornar desenvolvedor ou engenheiro de IA?</summary><p>O objetivo é atingir autonomia avançada no uso de IA e criar um MVP orientado, não obter formação técnica equivalente à de um desenvolvedor experiente. A profundidade dependerá da sua prática e do ritmo do aprendizado.</p></details>
+    <details class="faq-item"><summary>O que fica pronto ao final dos três meses?</summary><p>Uma aplicação didática funcional para produtividade, com dados, automação, IA e indicadores, além de biblioteca de prompts, projetos personalizados e exercícios de integração. O escopo será mantido enxuto para caber nas 30 horas.</p></details>
+    <details class="faq-item"><summary>As assinaturas do Claude, n8n e demais ferramentas estão incluídas?</summary><p>Não. Assinaturas, uso pago de APIs, hospedagem e serviços de terceiros são custos separados. Sempre que possível, os exercícios serão organizados para usar planos gratuitos ou ambientes de teste adequados.</p></details>
+    <details class="faq-item"><summary>Como funcionam meses com cinco sábados?</summary><p>A mensalidade cobre quatro encontros de 2h30. O quinto sábado, quando existir, fica livre ou pode ser combinado como encontro extra, mediante acordo prévio.</p></details>
+    <details class="faq-item"><summary>Como funcionam as aulas online?</summary><p>Todos os 12 encontros serão 100% online e ao vivo, por videoconferência, aos sábados. Usaremos compartilhamento de tela para demonstrações, exercícios guiados e resolução de dúvidas. O horário e a plataforma da chamada serão combinados antes do início.</p></details>
+  </div></div></section>
+
+  <section class="content-section investment" id="investimento"><div class="container">
+    <div class="section-header reveal"><div class="section-kicker">06 / INVESTIMENTO</div><h2>Uma evolução que cabe na sua rotina.</h2><p>Proposta de mentoria individual 100% online e ao vivo aos sábados. São 2h30 por encontro, à razão de R$ 150 por hora.</p></div>
+    <div class="price-layout">
+      <div class="pricing-calculator reveal"><h3>Simulador da mensalidade</h3><p class="cal-desc">Visualize a composição do investimento. A proposta oficial aparece ao lado.</p><label class="field-label" id="hours-label">Horas por sábado</label><div class="hours-options" role="group" aria-labelledby="hours-label"><button type="button" class="hours-button" data-hours="2" aria-pressed="false">2 horas</button><button type="button" class="hours-button" data-hours="2.5" aria-pressed="true">2h30</button><button type="button" class="hours-button" data-hours="3" aria-pressed="false">3 horas</button></div><div class="rate-labels"><label class="field-label" for="hourly-rate" style="margin:0">Valor por hora</label><div class="rate-value" id="rate-value">R$ 150</div></div><input id="hourly-rate" aria-label="Valor por hora" type="range" min="120" max="250" step="10" value="150" style="--fill:23.076923%"><div class="range-limits"><span>R$ 120</span><span>R$ 250</span></div><div class="calc-rule"></div><div class="calc-result-name">Valor mensal por 4 encontros</div><div class="calc-result" id="monthly-total" aria-live="polite">R$ 1.500,00</div><div class="calc-note" id="monthly-note">10 horas mensais · R$ 150,00/hora</div><div class="calc-alt" id="calc-alt">Configuração original da proposta selecionada.</div></div>
+      <aside class="quote reveal"><div class="eyebrow">PROPOSTA PARA JÁDER</div><h3>Mentoria individual · IA na prática</h3><p class="quote-intro">Encontros 100% online e ao vivo, com aprendizagem progressiva e projeto final.</p><div class="quote-price">R$ 1.500 <span>/ mês</span></div><p class="quote-detail">R$ 150/hora · 4 sábados online de 2h30 · 10h/mês</p><div class="quote-checks"><div class="quote-check"><svg class="icon"><use href="#i-check"/></svg><span>12 encontros online e ao vivo ao longo de 3 meses</span></div><div class="quote-check"><svg class="icon"><use href="#i-check"/></svg><span>30 horas de mentoria com laboratórios práticos</span></div><div class="quote-check"><svg class="icon"><use href="#i-check"/></svg><span>Materiais de apoio, prompts e exercícios por etapa</span></div><div class="quote-check"><svg class="icon"><use href="#i-check"/></svg><span>Projeto final com IA, n8n, Supabase e dashboard</span></div></div><div class="quote-total"><span>Investimento total · 3 meses</span><b>R$ 4.500</b></div></aside>
+    </div>
+    <div class="price-foot"><p>O simulador é ilustrativo e não altera as condições ofertadas: <strong>R$ 1.500 por mês para 4 encontros de 2h30</strong>. Assinaturas, APIs, serviços pagos e desenvolvimento sob encomenda não estão incluídos. O horário das videochamadas e eventuais remarcações serão combinados antes do início.</p><button class="btn btn-outline" type="button" id="print-btn"><svg class="icon"><use href="#i-code"/></svg> Imprimir / salvar em PDF</button></div>
+  </div></section>
+
+  <footer><div class="container"><div><b>MENTORIA IA · NA PRÁTICA</b><br><small>Proposta personalizada para Jáder · Preparada por Diego</small></div><div><a href="#inicio">Voltar ao topo ↑</a></div></div></footer>
+
+  <script>
+  (function(){
+    const options=[...document.querySelectorAll('.hours-button')];
+    const slider=document.getElementById('hourly-rate');
+    const rateValue=document.getElementById('rate-value');
+    const total=document.getElementById('monthly-total');
+    const note=document.getElementById('monthly-note');
+    const alternative=document.getElementById('calc-alt');
+    let hours=2.5;
+    const money=(n,decimals=2)=>new Intl.NumberFormat('pt-BR',{style:'currency',currency:'BRL',minimumFractionDigits:decimals,maximumFractionDigits:decimals}).format(n);
+    function refresh(){
+      const rate=Number(slider.value);
+      const monthly=rate*hours*4;
+      rateValue.textContent=money(rate,0);
+      total.textContent=money(monthly);
+      note.textContent=(hours*4).toLocaleString('pt-BR')+' horas mensais · '+money(rate)+'/hora';
+      slider.style.setProperty('--fill',((rate-120)/(250-120)*100)+'%');
+      alternative.textContent=(hours===2.5&&rate===150)?'Configuração original da proposta selecionada.':'Simulação alternativa; a proposta oficial continua R$ 1.500/mês.';
+    }
+    options.forEach(btn=>btn.addEventListener('click',()=>{hours=Number(btn.dataset.hours);options.forEach(b=>b.setAttribute('aria-pressed',String(b===btn)));refresh();}));
+    slider.addEventListener('input',refresh);refresh();
+    document.getElementById('print-btn').addEventListener('click',()=>window.print());
+    if('IntersectionObserver' in window){
+      const watcher=new IntersectionObserver(items=>items.forEach(item=>{if(item.isIntersecting){item.target.classList.add('visible');watcher.unobserve(item.target)}}),{threshold:.045,rootMargin:'0px 0px 60px 0px'});
+      document.querySelectorAll('.reveal').forEach(el=>watcher.observe(el));
+    }else{document.querySelectorAll('.reveal').forEach(el=>el.classList.add('visible'))}
+    if(window.matchMedia('(prefers-reduced-motion: reduce)').matches){document.querySelectorAll('.reveal').forEach(el=>el.classList.add('visible'))}
+  })();
+  </script>
+</body>
+</html>
